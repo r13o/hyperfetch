@@ -5,11 +5,14 @@ on:
     branches:
       - main
     paths:
+      - ".github/workflows/publish-to-cloudflare-workers.yml"
       - "worker/**"
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v3
