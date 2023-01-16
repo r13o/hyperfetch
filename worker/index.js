@@ -34,8 +34,8 @@ export default {
 Disallow: /
 `);
     }
+    const prefix = original.origin + '/';
     if (original.pathname.startsWith('/http')) {
-      const prefix = original.origin + '/';
       const target = new URL(original.pathname.substring(1) + original.search);
       const outgoing = new Request(target, incoming);
       if (outgoing.headers.has('host')) {
@@ -50,6 +50,6 @@ Disallow: /
       }
       return new HTMLRewriter().on('[href],[src],form[action]', new ElementHandler(prefix, target)).transform(response);
     }
-    return Response.redirect('https://howto.hyperfetch.net', 301);
+    return Response.redirect(prefix + 'https://howto.hyperfetch.net', 301);
   },
 };
