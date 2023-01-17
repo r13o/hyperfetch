@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - ".github/workflows/publish-to-cloudflare-workers.yml"
-      - "worker/**"
+      - "hyperfetch/**"
 
 jobs:
   publish:
@@ -21,4 +21,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          workingDirectory: ./worker
+          workingDirectory: ./hyperfetch
